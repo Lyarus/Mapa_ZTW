@@ -1,0 +1,55 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    encoders:
+        AppBundle\Entity\Uzytkownik: bcrypt
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        main:
+            entity:
+                class: AppBundle\Entity\Uzytkownik
+                property: login
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            form_login:
+                login_path: login
+                check_path: login
+
+            logout:
+                path: logout
+
+    access_control:
+        - path: ^/$
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/(en|pl)/$
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/(en|pl)/login$
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/(en|pl)/register$
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/(en|pl)/about
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/(en|pl)/posts
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/(en|pl)/contact$
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/(en|pl)/images$
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/(en|pl)/start$
+          roles: IS_AUTHENTICATED_ANONYMOUSLY
+        - path: ^/
+          roles: ROLE_USER

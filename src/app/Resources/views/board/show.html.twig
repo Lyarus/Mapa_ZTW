@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}<h1>Posts</h1>{% endblock %}
+
+{% block body %}
+    <div id="fh5co-main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<h2>{{ post.nazwaPostu }}</h2>
+                    <span style="font-style: italic; font-size: 15px; color: #EF5353;"><i class="icon-user"></i> Posted by {{ post.idUzytkownik }} - {{ post.dataCzasPost|date }}</span>
+					<div class="fh5co-spacer fh5co-spacer-sm"></div>
+					<p>{{ post.trescPost }}</p>
+					<a href="{{ path('homepage') }}" class="btn btn-primary"><i class="icon-arrow-left2"></i> Back</a>					
+					<a href="{{ path('comment',{'post' : post.idPost }) }}" class="btn btn-primary"><i class="icon-speech-bubble"></i> Add comment</a>
+				</div>
+        	</div>
+       </div>
+	</div>
+
+
+
+	 <div id="fh5co-main">
+		<div class="container">
+			<div class="row">
+			{% for comment in comments %}
+				<div class="col-md-2 col-md-offset-2">
+					<h2>{{ comment.trescKom }}</h2>
+                    <span style="font-style: italic; font-size: 15px; color: #EF5353;"><i class="icon-user"></i> Posted by {{ comment.idUzytkownik }} - {{ comment.dataCzasKom|date }}</span>
+				</div>
+
+			{% endfor %}
+        	</div>
+       </div>
+	</div>
+{% endblock %}

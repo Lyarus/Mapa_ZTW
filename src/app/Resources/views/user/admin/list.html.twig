@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div id="fh5co-main">
+    <h2><i class="icon-users"></i> Users list</h2>
+    {% if users|length > 0 %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{{ 'user.fullname'|trans }}</th>
+                <th>{{ 'user.username'|trans }}</th>
+                <th>{{ 'user.email'|trans }}</th>
+                <th>{{ 'user.registered_at'|trans }}</th>
+                <th>{{ 'user.is_admin'|trans }}</th>  
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.fullname }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.registeredAt |date }}</td>
+                    <td>{{ user.isAdmin }}</td>
+                    <td><a class="btn btn-block btn-sm btn-outline" href="{{ path('admin_user_show', {'id': user.id}) }}"><i class="icon-eye"></i> View</a></td>
+                    <td><a class="btn btn-block btn-sm btn-outline" href="{{ path('admin_user_edit', {'id': user.id}) }}"><i class="icon-edit"></i> Edit</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No users.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-warning">No users.</div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

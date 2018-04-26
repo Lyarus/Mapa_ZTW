@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {#Lat: <input id="lat" name="lat" val="51.713956"/>#}
+    {#<hr>#}
+    {#Lng: <input id="lon" name="lon" val="17.006653"/>#}
+    <hr>
+    <header id="fh5co-header">
+        <div class="container">
+            <div class="row row-padded">
+                <div class="col-md-12 text-center">
+                    <h2>Dodawanie miejsca</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="map_container">
+        <div id="googleMap" style="width:100%;height:600px"></div>
+    </div>
+
+
+
+
+    <script>
+        //                function getLocation() {
+        //                    if (navigator.geolocation) {
+        //                        navigator.geolocation.getCurrentPosition(initialize);
+        //                    } else {
+        //                        innerHTML = "Geolocation is not supported by this browser.";
+        //                    }
+        //                }
+
+        var map;
+        var marker;
+
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(51, 17);
+            var myOptions = {
+                zoom: 7,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+
+
+
+//             marker refers to a global variable
+
+//            marker = new google.maps.Marker({
+//                position: myLatlng,
+//                map: map
+//            });
+
+//            function placeMarker(location) {
+//                var clickLat = location.latLng.lat();
+//                var clickLon = location.latLng.lng();
+//                document.getElementById("miejsce_lng").value = clickLat.toFixed(5);
+//                document.getElementById("miejsce_lat").value = clickLon.toFixed(5);
+//                if (marker) {
+//                    marker.setPosition(location);
+//
+//                } else {
+//                    marker = new google.maps.Marker({
+//                        position: location,
+//                        map: map
+//                    });
+//                }
+//            }
+//
+//            google.maps.event.addListener(map, 'click', function (event) {
+//                placeMarker(event.latLng);
+//            });
+
+            google.maps.event.addListener(map, "click", function (event) {
+                // get lat/lon of click
+                var clickLat = event.latLng.lat();
+                var clickLon = event.latLng.lng();
+                var location=new google.maps.LatLng(clickLat, clickLon);
+
+                // show in input box
+                document.getElementById("miejsce_lng").value = clickLat.toFixed(5);
+                document.getElementById("miejsce_lat").value = clickLon.toFixed(5);
+
+                if (marker) {
+                    marker.setPosition(new google.maps.LatLng(clickLat, clickLon));
+                } else {
+                    marker = new google.maps.Marker({
+                        position: location,
+                        map: map
+                    });
+                }
+//                 marker = new google.maps.Marker({
+//                    position: new google.maps.LatLng(clickLat, clickLon),
+//                    map: map
+//                });
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: '<p>Marker Location:' + marker.getPosition() + '</p>'
+                });
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.open(map, marker);
+                });
+            });
+
+        }
+
+
+    </script>
+
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7oJuharSDs2LZMLI-WbUW_w-NxpPLZ78&callback=initialize">
+    </script>
+
+
+    <div class="create_miejsce_container">
+        {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    </div>
+
+
+{% endblock %}

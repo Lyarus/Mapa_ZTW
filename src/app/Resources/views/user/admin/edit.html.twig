@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{# {% block header %}<h1>Register!</h1>{% endblock %} #}
+
+{% block body %}
+<div id="fh5co-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2><i class="icon-users"></i> Edit user</h2>
+                <div class="fh5co-spacer fh5co-spacer-sm"></div>
+                {{ form(form) }}
+                <a href="{{ path('admin_user_list') }}" class="btn btn-primary"><i class="icon-arrow-left2"></i> Back</a>        							
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

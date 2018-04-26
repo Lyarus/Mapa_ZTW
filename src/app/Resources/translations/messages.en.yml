@@ -1,0 +1,25 @@
+contact.fullname: Fullname
+contact.email: Email
+contact.subject: Subject
+contact.contacted_at: Contacted at
+contact.processed: Processed
+hello: Hello %name%!
+contact.count: "%count% contact|%count% contacts"
+
+uzytkownik.idUzytkownik: User ID
+uzytkownik.imie: Name
+uzytkownik.email: Email
+uzytkownik.dataRejestracji: Registered At
+uzytkownik.czyAdmin: Admin
+uzytkownik.dataUr: Birth day
+uzytkownik.nazwisko: Surname
+uzytkownik.obrazekU: Picture
+uzytkownik.login: Login
+uzytkownik.haslo: Password
+uzytkownik.miastoU: Place
+
+post.id: Id
+post.content: Content
+post.title: Title
+post.published_at: Published At
+post.fullname: Fullname

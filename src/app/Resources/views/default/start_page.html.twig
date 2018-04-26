@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h4>default/start_page</h4>
+
+    <li{{ app.request.get('_route') == 'login' ? ' class="active"' }}><a href="{{ path('login') }}"><i
+                    class="icon-user"></i> Zaloguj się</a></li>
+    <li{{ app.request.get('_route') == 'register' ? ' class="active"' }}><a href="{{ path('register') }}"><i
+                    class="icon-user"></i> Zarejestruj się</a></li>
+{% endblock %}

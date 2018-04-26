@@ -1,0 +1,41 @@
+<div class="navbar navbar-default navbar-fixed-top" role="banner">
+
+    <div class="container">
+            <a class="navbar-brand" href="{{ path('homepage') }}">
+                {% if app.user %}
+                    Strona Główna
+                {% else %}
+                Strona Startowa
+                {% endif %}
+            </a>
+            <a class="navbar-brand" href="{{ path('about') }}">
+                O nas
+            </a>
+            <a class="navbar-brand" href="{{ path('images') }}">
+                Zdjęcia
+            </a>
+            <a class="navbar-brand" href="{{ path('contact') }}">
+                Kontakt
+            </a>
+        </div>
+
+    {% if app.user %}
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('map') }}">
+                Mapa
+            </a>
+            <a class="navbar-brand" href="{{ path('mapView') }}">
+                Miejsca
+            </a>
+            <a class="navbar-brand" href="{{ path('trips') }}">
+                Podróże
+            </a>
+            <a class="navbar-brand" href="{{ path('creator') }}">
+                Kreator podróży
+            </a>
+            <a class="navbar-brand" href="{{ path('board') }}">
+                Forum
+            </a>
+        </div>
+    {% endif %}
+</div>

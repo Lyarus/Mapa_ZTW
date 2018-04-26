@@ -1,0 +1,20 @@
+wiadomosc.fullname: Imie i nazwisko
+wiadomosc.email: Email
+wiadomosc.subject: Temat
+wiadomosc.contacted_at: Wyslano:
+wiadomosc.processed: Proces trwa
+hello: Witaj %name% !
+wiadomosc.count: "%count% contact|%count% contacts"
+
+
+uzytkownik.idUzytkownik: Id uzytkownika
+uzytkownik.imie: Imie uzytkownika
+uzytkownik.email: Email
+uzytkownik.dataRejestracji: Data rejestracji
+uzytkownik.czyAdmin: czy jest Administratorem
+uzytkownik.dataUr: Data urodzenia
+uzytkownik.nazwisko: Nazwisko uzytkownika
+uzytkownik.obrazekU: zdjecie uzytkownika
+uzytkownik.login: Nazwa uzytkownika
+uzytkownik.haslo: Haslo uzytkownika
+uzytkownik.miastoU: Miasto uzytkownika

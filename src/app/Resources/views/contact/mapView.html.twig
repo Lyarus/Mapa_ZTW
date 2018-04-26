@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="map_container">
+        <div id="googleMap" style="width:1200px;height:750px"></div>
+    </div>
+
+
+
+
+
+    {#{% for miejsce in miejsca %}#}
+
+        {#<div class="item animate-box">#}
+            {# <a href="{{ asset('images/img_10.jpg') }}" class="image-popup fh5co-board-img"><img src="{{ asset('images/img_10.jpg') }}" alt="image"></a> #}
+            {#<div class="fh5co-desc">#}
+                {#<h4>{{ miejsce.lat }}</h4>#}
+                {#<h4>{{ miejsce.lng }}</h4>#}
+                {#<a href="javascript:TestMarker({{ miejsce.lat }},{{ miejsce.lng }})">LINK</a>#}
+            {#</div>#}
+        {#</div>#}
+    {#{% endfor %}#}
+
+    {#<a href="javascript:showMap()">SHOW</a>#}
+    <hr>
+    <a href="javascript:showMap()" class="btn btn-primary" style="display: block; width: 25%; margin: 0 auto 20px;">Pokaż miejsca</a>
+
+
+    <script>
+        {#var miejsca = '{{ miejsca }}';#}
+        {#var miejscaObj = JSON.parse(miejsca);#}
+
+        {#var miejscaObj= JSON.parse('{{ miejscaSer |raw}}');#}
+//        alert(miejscaObj.toString());
+
+
+//        for (var i = 0; i < miejscaObj.length; i++) {
+//            TestMarker(miejscaObj[i].lat,miejscaObj[i].lng);
+////            alert(miejscaObj[i].lat);
+//        }
+        function  showMap(){
+            var miejscaObj = {{ miejscaSer|raw}};
+          for (var i = 0; i < miejscaObj.length; i++) {
+              TestMarker(miejscaObj[i].lng,miejscaObj[i].lat);
+//            alert(miejscaObj[i].lat);
+          }
+        }
+
+
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(40.779502, -73.967857);
+            var myOptions = {
+                zoom: 2,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+//            TestMarker();
+        }
+
+        // Function for adding a marker to the page.
+        function addMarker(location) {
+            marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+
+        function TestMarker(lng, lat) {
+            var CentralPark = new google.maps.LatLng(lng, lat);
+            addMarker(CentralPark);
+        }
+    </script>
+
+
+
+
+
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7oJuharSDs2LZMLI-WbUW_w-NxpPLZ78&callback=initialize">
+    </script>
+
+{% endblock %}

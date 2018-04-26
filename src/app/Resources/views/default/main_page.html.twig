@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h4>default/main_page</h4>
+
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .card {
+                display: inline-block;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+                max-width: 240px;
+                max-height: fit-content;
+                margin-left: initial;
+                text-align: center;
+                font-family: Cambria;
+            }
+
+            button {
+                border: none;
+                outline: 0;
+                display: inline-block;
+                padding: 8px;
+                color: white;
+                background-color: #000;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                font-size: 18px;
+            }
+
+            a {
+                text-decoration: none;
+                font-size: 22px;
+                color: black;
+            }
+
+            button:hover, a:hover {
+                opacity: 0.7;
+            }
+        </style>
+
+        <div class="card">
+            <a href="{{ path('map') }}">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR12B0r36dolx36i0pe7cfeRePmFidEWeTYqw8YXV72QLBZrBKidg"
+                 alt="" style="width:100%">
+                <p><button>Mapa</button></p>
+            </a>
+        </div>
+
+
+        <div class="card">
+            <a href="{{ path('trips') }}">
+            <img src="https://elearningindustry.com/wp-content/uploads/2017/09/consumer-decision-journey-for-learners-chapter-two-e1505309501197.jpeg"
+                 alt="" style="width:100%">
+                <p><button>Podróże</button></p>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="{{ path('creator') }}">
+            <img src="http://www.mauro-libi.com/wp-content/uploads/2017/09/woman-at-start-line-on-road.jpg"
+                 alt="" style="width:100%">
+            <p><button>Kreator podróży</button></p>
+            </a>
+        </div>
+
+
+        <div class="card">
+            <a href="{{ path('board') }}">
+            <img src="https://marketingland.com/wp-content/ml-loads/2015/10/ss-talk-conversation-speech-bubble-800x450.jpg"
+                 alt="" style="width:100%">
+            <p><button>Forum</button></p>
+            </a>
+        </div>
+    </head>
+
+{% endblock %}
